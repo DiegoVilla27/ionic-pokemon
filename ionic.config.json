@@ -1,0 +1,7 @@
+{
+  "name": "ionic-pokemon",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
