@@ -8,8 +8,12 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+    "lint": "ng lint",
+    "prepare": "husky install",
     "test": "ng test",
-    "lint": "ng lint"
+    "test:coverage": "ng test --code-coverage",
+    "test:coverage:one": "ng test --code-coverage --watch --include=src/app/services/pokemon.service.spec.ts",
+    "build:styles": "node-sass src/global.scss src/global.min.css --output-style=compressed"
   },
   "private": true,
   "dependencies": {
@@ -43,6 +47,9 @@
     "@angular/compiler-cli": "^17.0.2",
     "@angular/language-service": "^17.0.2",
     "@capacitor/cli": "6.0.0",
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@commitlint/types": "^19.0.3",
     "@ionic/angular-toolkit": "^11.0.1",
     "@types/jasmine": "~5.1.0",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
@@ -51,6 +58,7 @@
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsdoc": "^48.2.1",
     "eslint-plugin-prefer-arrow": "1.2.2",
+    "husky": "^9.0.11",
     "jasmine-core": "~5.1.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~6.4.0",
@@ -58,6 +66,8 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "lint-staged": "^15.2.4",
+    "prettier": "^3.2.5",
     "typescript": "~5.2.2"
   },
   "description": "An Ionic project"

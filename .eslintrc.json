@@ -1,11 +1,17 @@
 {
   "root": true,
-  "ignorePatterns": ["projects/**/*"],
+  "ignorePatterns": [
+    "projects/**/*"
+  ],
   "overrides": [
     {
-      "files": ["*.ts"],
+      "files": [
+        "*.ts"
+      ],
       "parserOptions": {
-        "project": ["tsconfig.json"],
+        "project": [
+          "tsconfig.json"
+        ],
         "createDefaultProgram": true
       },
       "extends": [
@@ -16,7 +22,10 @@
         "@angular-eslint/component-class-suffix": [
           "error",
           {
-            "suffixes": ["Page", "Component"]
+            "suffixes": [
+              "Page",
+              "Component"
+            ]
           }
         ],
         "@angular-eslint/component-selector": [
@@ -38,9 +47,95 @@
       }
     },
     {
-      "files": ["*.html"],
-      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
       "rules": {}
     }
-  ]
+  ],
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "quotes": [
+      // Regla para usar doble comilla
+      "error",
+      "double",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
+    ],
+    "@typescript-eslint/quotes": [
+      "error",
+      "double",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
+    ],
+    "eqeqeq": [
+      // Regla para igualación estricta (=== OR !==)
+      "error",
+      "smart"
+    ],
+    "no-console": [
+      // Regla para evitar los consoles
+      "error"
+    ],
+    "no-else-return": [
+      // Regla para no permitir else como return
+      "error",
+      {
+        "allowElseIf": true
+      }
+    ],
+    "no-empty": [
+      // Regla para no permitir blocks vacios
+      "error",
+      {
+        "allowEmptyCatch": false
+      }
+    ],
+    "no-extra-semi": [
+      // Regla para no permitir doble punto y coma
+      "error"
+    ],
+    "@typescript-eslint/no-extra-semi": [
+      "error"
+    ],
+    "semi": [
+      // Regla para verificar si tiene punto y comal al final
+      "error",
+      "always",
+      {
+        "omitLastInOneLineBlock": true,
+        "omitLastInOneLineClassBody": true
+      }
+    ],
+    "@typescript-eslint/semi": [
+      "error",
+      "always",
+      {
+        "omitLastInOneLineBlock": true,
+        "omitLastInOneLineClassBody": true
+      }
+    ]
+  }
 }

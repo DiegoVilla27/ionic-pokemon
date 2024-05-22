@@ -8,11 +8,8 @@
 *.tmp.*
 UserInterfaceState.xcuserstate
 $RECYCLE.BIN/
-
 *.log
 log.txt
-
-
 /.sourcemaps
 /.versions
 /coverage
@@ -22,6 +19,8 @@ log.txt
 /www
 /platforms
 /plugins
+/android
+/ios
 
 # Compiled output
 /dist
