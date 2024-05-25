@@ -1,0 +1,30 @@
+div {
+  @apply grid grid-cols-12 gap-5 mb-2;
+  form {
+    @apply 
+    relative 
+    col-span-12
+    md:col-span-6
+    lg:col-span-4;
+    input {
+      @apply
+      w-full 
+      h-10 
+      rounded-full 
+      border-[0.5px] 
+      pl-10 
+      pr-4 
+      shadow-md
+      font-montserrat-r
+      bg-slate-200 
+      text-slate-600;
+      &::placeholder {
+        @apply text-slate-400;
+      }
+    }
+    img {
+      @apply w-5 h-5 object-contain absolute top-[10px] left-3;
+    }
+  }
+  
+}

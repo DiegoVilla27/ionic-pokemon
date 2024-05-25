@@ -1,0 +1,13 @@
+<ion-fab
+  slot="fixed"
+  horizontal="end"
+  vertical="bottom"
+  class="fab"
+>
+  <ion-fab-button
+    color="dark"
+    (click)="changeGeneration(generation)"
+  >
+    <img [src]="generation === 1 ? IMG_POKEBALL_ULTRA : IMG_POKEBALL" />
+  </ion-fab-button>
+</ion-fab>

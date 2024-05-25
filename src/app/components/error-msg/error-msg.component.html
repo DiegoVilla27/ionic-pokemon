@@ -1,0 +1,12 @@
+<div *ngFor="let validation of list">
+  <div
+    *ngIf="
+      form.get(type)!.hasError(validation.type) &&
+      (form.get(type)!.dirty || form.get(type)!.touched)
+    "
+  >
+    <small>
+      {{ validation.message }}
+    </small>
+  </div>
+</div>

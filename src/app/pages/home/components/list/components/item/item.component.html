@@ -1,0 +1,30 @@
+<div
+  class="pokemon group"
+  [ngStyle]="{ 'background-image': pokemon.color! | gradientBackground }"
+  (click)="selectPokemon(pokemon)"
+  *ngIf="!loading"
+>
+  <div class="pokemon-info">
+    <small>#{{ pokemon.info!.id }}</small>
+    <h1>{{ pokemon.info!.name }}</h1>
+    <div class="pokemon-info-stats">
+      <div>{{ pokemon.info!.weight }}kg</div>
+      <div>{{ pokemon.info!.height }}m</div>
+    </div>
+    <div class="pokemon-info-types">
+      <div
+        *ngFor="let type of pokemon.info!.types"
+        [ngStyle]="type.type.name | colorType"
+      >
+        <img [src]="type.type.name | iconType" />{{ type.type.name }}
+      </div>
+    </div>
+  </div>
+  <div class="pokemon-bubble"></div>
+  <img
+    class="pokemon-img"
+    [src]="pokemon.info!.sprites.other?.home?.front_default"
+  />
+</div>
+
+<!--<poke-skeleton *ngIf="loading"></poke-skeleton>-->

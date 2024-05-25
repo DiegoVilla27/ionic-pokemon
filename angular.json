@@ -13,7 +13,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "poke",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -126,7 +126,10 @@
     }
   },
   "cli": {
-    "schematicCollections": ["@ionic/angular-toolkit"]
+    "schematicCollections": [
+      "@ionic/angular-toolkit"
+    ],
+    "analytics": "b07f44a9-5170-4c57-8541-4b663e857acd"
   },
   "schematics": {
     "@ionic/angular-toolkit:component": {

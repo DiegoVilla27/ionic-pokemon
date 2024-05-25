@@ -1,0 +1,19 @@
+<div>
+  <form
+    [formGroup]="form"
+    autocomplete="off"
+    (ngSubmit)="submit()"
+  >
+    <input
+      formControlName="query"
+      placeholder="Search Pokémon..."
+    />
+    <img [src]="ICON_SEARCH" />
+    <poke-error-msg
+      *ngIf="form.get('query')!.errors"
+      [form]="form"
+      [list]="validations.query"
+      [type]="'query'"
+    />
+  </form>
+</div>

@@ -1,0 +1,33 @@
+.home {
+  &-header {
+    @apply flex 
+    flex-col 
+    gap-2 
+    fixed 
+    overflow-x-hidden
+    w-full
+    p-3
+    pb-2
+    z-20
+    bg-slate-100;
+    h1 {
+      line-height: normal !important;
+      @apply font-montserrat-b
+      text-5xl
+      sm:text-6xl
+      md:text-8xl;
+    }
+    poke-search {
+      @apply z-10;
+    }
+    img {
+      @apply w-44 fixed -right-12 -top-12 opacity-50;
+    }
+  }
+  &-content {
+    @apply px-3 mt-[138.5px];
+  }
+  poke-change-generation {
+    @apply fixed bottom-1 right-1;
+  }
+}
