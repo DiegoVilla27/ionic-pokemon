@@ -1,0 +1,8 @@
+::ng-deep ngx-skeleton-loader {
+  .skeleton-loader {
+    margin: 0px !important;
+    &::before {
+      background-image: linear-gradient(90deg, #b9b9b9, #b9b9b9, #b9b9b9);
+    }
+  }
+}

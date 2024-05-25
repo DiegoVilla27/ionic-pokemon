@@ -7,6 +7,7 @@ import { GradientBackgroundPipe } from "src/app/pipes/gradient-background.pipe";
 import { PokemonService } from "src/app/services/pokemon.service";
 import { ColorTypePipe } from "src/app/pipes/color-type.pipe";
 import { IconTypePipe } from "src/app/pipes/icon-type.pipe";
+import { SkeletonComponent } from "./components/skeleton/skeleton.component";
 
 @Component({
   selector: "poke-item",
@@ -19,7 +20,8 @@ import { IconTypePipe } from "src/app/pipes/icon-type.pipe";
     NgStyle,
     GradientBackgroundPipe,
     ColorTypePipe,
-    IconTypePipe
+    IconTypePipe,
+    SkeletonComponent
   ]
 })
 export class ItemComponent implements OnInit {

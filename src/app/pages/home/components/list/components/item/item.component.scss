@@ -1,6 +1,6 @@
 // MIXIN
 @mixin text {
-  @apply capitalize text-2xl font-bold;
+  @apply capitalize text-3xl font-bold;
 }
 
 .pokemon {
@@ -9,7 +9,7 @@
   cursor-pointer
   p-4
   mb-3
-  hover:scale-90
+  hover:scale-95
   transition-all
   delay-100
   ease-linear;
@@ -27,7 +27,7 @@
     &-stats {
       @apply flex 
       gap-2 
-      h-8;
+      h-10;
       div {
         @apply flex
         items-center
@@ -42,7 +42,7 @@
       }
     }
     &-types {
-      @apply flex gap-2 h-8;
+      @apply flex gap-2 h-10;
       div {
         @apply px-3
         rounded-md
@@ -53,7 +53,7 @@
         items-center
         justify-center;
         img {
-          @apply w-4 h-4;
+          @apply w-6 h-6;
         }
       }
     }
@@ -62,8 +62,8 @@
     @apply absolute
     right-0
     top-0
-    w-40
-    h-40
+    w-44
+    h-44
     transition-all
     delay-100
     ease-linear

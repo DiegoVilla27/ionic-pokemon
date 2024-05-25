@@ -1,0 +1,16 @@
+.poke-item-skeleton {
+  @apply flex
+  justify-between
+  items-center
+  rounded-xl
+  bg-gray-200
+  p-4
+  mb-3;
+  &-header {
+    @apply flex flex-col;
+  }
+  &-box {
+    @apply flex
+    gap-2;
+  }
+}
