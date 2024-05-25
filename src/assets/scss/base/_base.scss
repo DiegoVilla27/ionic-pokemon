@@ -1,0 +1,24 @@
+body {
+  @apply overflow-x-hidden text-[16px] font-montserrat-r;
+  ion-app,
+  ion-content {
+    @apply bg-slate-100;
+    --background: rgb(241 245 249 / var(--tw-bg-opacity));
+  }
+}
+
+input,
+select,
+textarea {
+  @apply outline-none border-0;
+  &:focus {
+    @apply outline-none border-0;
+  }
+}
+
+ion-content::part(scroll) {
+  padding-top: var(--ion-safe-area-top, 0);
+}
+ion-content::part(scroll) {
+  padding-bottom: var(--ion-safe-area-bottom, 0);
+}

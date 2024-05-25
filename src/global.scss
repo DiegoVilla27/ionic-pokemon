@@ -34,4 +34,11 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+/* @import '@ionic/angular/css/palettes/dark.system.css'; */
+
+// FONTS
+@import "./assets/scss/fonts/fonts";
+// TAILWIND
+@import "./assets/scss/libraries/tailwind/tailwind";
+// BASE
+@import "./assets/scss/base/base";
