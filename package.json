@@ -12,7 +12,7 @@
     "prepare": "husky install",
     "test": "ng test",
     "test:coverage": "ng test --code-coverage",
-    "test:coverage:one": "ng test --code-coverage --watch --include=src/app/components/display-item/display-item.component.spec.ts",
+    "test:coverage:one": "ng test --code-coverage --watch --include=src/app/home/home.page.spec.ts",
     "build:styles": "node-sass src/global.scss src/global.min.css --output-style=compressed",
     "platform:android": "ionic cap add android",
     "build:android": "ionic cap build android",
