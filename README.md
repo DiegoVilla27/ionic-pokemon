@@ -60,6 +60,7 @@ Install & configure Husky (Git Hooks), Lint Staged (Commits Staged Linter), Comm
   - Script -> `"test:staged": "git diff --cached --diff-filter=d --name-only -- '*.spec.ts' | xargs -I {} ng test --include={} --browsers=ChromeHeadless --watch=false"`
     - `git diff` Show changes in files
     - `--cached` Only files in staged
+    - `--diff-filter=d` Ignore files spec deleted
     - `--name-only` Only names of files
     - `'*.spec.ts'` Only files spec.ts
     - `|` Redirect before command to after command
