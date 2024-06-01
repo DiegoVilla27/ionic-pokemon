@@ -1,12 +1,12 @@
 import { NgFor, NgIf, NgStyle } from "@angular/common";
-import { Component, Input, OnInit, Renderer2 } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { prominent } from "color.js";
 import { Color } from "src/app/interfaces/colors.interface";
 import { IPokemon } from "src/app/interfaces/pokemon.interface";
-import { GradientBackgroundPipe } from "src/app/pipes/gradient-background.pipe";
-import { PokemonService } from "src/app/services/pokemon/pokemon.service";
 import { ColorTypePipe } from "src/app/pipes/color-type.pipe";
+import { GradientBackgroundPipe } from "src/app/pipes/gradient-background.pipe";
 import { IconTypePipe } from "src/app/pipes/icon-type.pipe";
+import { PokemonService } from "src/app/services/pokemon/pokemon.service";
 import { SkeletonComponent } from "./components/skeleton/skeleton.component";
 
 @Component({
@@ -28,10 +28,7 @@ export class ItemComponent implements OnInit {
   @Input() pokemon!: IPokemon;
   loading: boolean = true;
 
-  constructor(
-    private _pokemonSvc: PokemonService,
-    private _renderer: Renderer2
-  ) {}
+  constructor(private _pokemonSvc: PokemonService) {}
 
   ngOnInit(): void {
     this.addColorPokemon();
@@ -54,7 +51,6 @@ export class ItemComponent implements OnInit {
   }
 
   selectPokemon(pokemon: IPokemon): void {
-    this._renderer.setStyle(document.body, "overflow-y", "hidden");
     this._pokemonSvc.setPokemonSelected(pokemon);
   }
 }

@@ -8,12 +8,23 @@ Npm - Version 10.5.0
 Cocoapods - Version 1.15.2
 Create: `ionic start > angular > blank`
 Add platforms (Scripts): `npm run platform:android` and `npm run platform:ios`
-Run platforms (Scripts): `npm run run:android` and `npm run run:ios`
-> If you have this error: _`xcode-select: error: tool 'xcodebuild' requires Xcode, but active developer directory '/Library/Developer/CommandLineTools' is a command line tools instance`_, pls exec this in terminal `sudo xcode-select -s /Applications/Xcode.app/Contents/Developer` (Active XCode like native path developer and not CLI XCodeTools)
+Run platforms (Scripts): `npm run android` and `npm run ios`
 
 ## Development server
 
-Run `ng serve` for a dev server and navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `ionic serve` for a dev server and navigate to `http://localhost:8100/`. The application will automatically reload if you change any of the source files.
+
+## Errors
+
+> If you have this error: _`xcode-select: error: tool 'xcodebuild' requires Xcode, but active developer directory '/Library/Developer/CommandLineTools' is a command line tools instance`_, pls exec this in terminal `sudo xcode-select -s /Applications/Xcode.app/Contents/Developer` (Active XCode like native path developer and not CLI XCodeTools).
+
+> If you need disabled `@apply error scss` for _Tailwind_ add this script in _.vscode > settings.json_: _`"scss.lint.unknownAtRules": "ignore"`_
+
+> If you have this error in tests: `Failed: Failed to set the 'adoptedStyleSheets' property on 'Document': Failed to convert value to 'CSSStyleSheet'.` is because the component has `ng-template` so, to fix that you need to add manually _`fixture.detectChanges();`_ after _`fixture = TestBed.createComponent(YourComponent)`_ and that's it.
+
+> If Husky doesn't work on MacOS, run the command (Within the project): _`chmod ug+x .husky/*`_
+
+> If you need see prettier console objects in testing, use this: `console.log(JSON.stringify(obj, undefined, 2));`
 
 ## Commits
 
@@ -61,8 +72,5 @@ Install & configure Husky (Git Hooks), Lint Staged (Commits Staged Linter), Comm
 - Create a git hook to do a pre-push and this run HERE ANYTHING COMMAND each push
   - (Old version) `npx husky add .husky/pre-push "#HERE ANYTHING COMMAND"`
   - (New version) `echo "#HERE ANYTHING COMMAND" > .husky/pre-push`
-
-> If Husky doesn't work on MacOS, run the command (Within the project): _`chmod ug+x .husky/*`_
-
 
 > Developed By: __`Diego Villa`__. - Website: [https://www.cabuweb.com](https://www.cabuweb.com)

@@ -1,10 +1,13 @@
 import { HttpClientModule } from "@angular/common/http";
 import { Component } from "@angular/core";
-import { IonApp, IonRouterOutlet } from "@ionic/angular/standalone";
-import { PokemonService } from "./services/pokemon/pokemon.service";
-import { PlatformService } from "./services/platform/platform.service";
-import { Platform } from "@ionic/angular";
 import { StatusBar } from "@capacitor/status-bar";
+import { Platform } from "@ionic/angular";
+import { IonApp, IonRouterOutlet } from "@ionic/angular/standalone";
+import { PlatformService } from "./services/platform/platform.service";
+import { PokemonService } from "./services/pokemon/pokemon.service";
+/* eslint-disable no-var */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare var window: any;
 
 @Component({
   selector: "poke-root",
@@ -18,8 +21,25 @@ export class AppComponent {
     private _platform: Platform,
     private _platformSvc: PlatformService
   ) {
+    this.initializeApp();
     this.getPlatform();
     this.setStatusBar();
+  }
+
+  initializeApp(): void {
+    this._platform.ready().then(() => {
+      this.fixSafeAreaAndroidNotch();
+    });
+  }
+
+  fixSafeAreaAndroidNotch(): void {
+    // This method needed cordova-plugin-android-notch library to work
+    if (window.AndroidNotch) {
+      const style = document.documentElement.style;
+      window.AndroidNotch.getInsetTop((px: number) => {
+        style.setProperty("--ion-safe-area-top", px + "px");
+      });
+    }
   }
 
   getPlatform(): void {

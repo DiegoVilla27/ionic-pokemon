@@ -1,24 +1,32 @@
-<ion-content
-  [fullscreen]="true"
-  class="home"
+<ion-header
+  class="ion-no-border"
+  mode="ios"
+  *ngIf="!loading"
 >
-  <ng-container *ngIf="!loading">
+  <ion-toolbar>
     <div class="home-header">
       <h1>Pokedex</h1>
       <poke-search (searchFn)="filter($event)" />
       <img [src]="IMG_POKE_BG" />
     </div>
-    <div class="home-content" #content>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="home">
+  <ng-container *ngIf="!loading">
+    <div class="home-content">
       <poke-list [pokemons]="pokemonsFiltered" />
+      <ion-button
+        color="dark"
+        expand="block"
+        (click)="scrollToTop()"
+        >Regresar al inicio</ion-button
+      >
     </div>
-    <!--<poke-display-item
-      *ngIf="pokemonSelected"
-      [pokemon]="pokemonSelected!"
-    ></poke-display-item>-->
     <poke-change-generation
       [generation]="generation"
       (changeGenerationFn)="changeGeneration($event)"
     />
   </ng-container>
+  <poke-display-item [pokemon]="pokemonSelected!"></poke-display-item>
   <poke-spinner *ngIf="loading"></poke-spinner>
 </ion-content>

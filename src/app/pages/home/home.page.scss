@@ -3,12 +3,10 @@
     @apply flex 
     flex-col 
     gap-2 
-    fixed 
-    overflow-x-hidden
     w-full
-    p-3
+    pt-0
+    px-3
     pb-2
-    z-20
     bg-slate-100;
     h1 {
       line-height: normal !important;
@@ -21,11 +19,14 @@
       @apply z-10;
     }
     img {
-      @apply w-44 fixed -right-12 -top-12 opacity-50;
+      @apply w-28 fixed right-0 top-0 opacity-50;
     }
   }
   &-content {
     @apply px-3;
+    ion-button {
+      @apply mb-3;
+    }
   }
   poke-change-generation {
     @apply fixed bottom-1 right-1;

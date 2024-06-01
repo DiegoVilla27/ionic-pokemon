@@ -1,0 +1,95 @@
+<ion-modal [isOpen]="pokemon ? true : false">
+  <ion-header
+    class="ion-no-border"
+    mode="md"
+  >
+    <ion-toolbar>
+      <div>
+        <button (click)="close()">
+          <img [src]="ICON_CLOSE" />
+        </button>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content
+    class="ion-no-padding"
+    [fullscreen]="true"
+  >
+    <div
+      class="modal"
+      *ngIf="pokemon"
+    >
+      <div class="modal-card">
+        <div
+          class="modal-card-bg"
+          [ngStyle]="{
+            'background-image': pokemon!.color | gradientBackground
+          }"
+        ></div>
+        <div class="modal-card-header">
+          <img
+            [src]="pokemon!.info?.sprites?.other?.home?.front_default"
+            alt="Avatar {{ pokemon!.name }}"
+          />
+        </div>
+        <div class="modal-card-content">
+          <h1>{{ pokemon!.name }}</h1>
+          <div class="modal-card-content-types">
+            <div
+              *ngFor="let type of pokemon!.info?.types"
+              [ngStyle]="type.type.name | colorType"
+            >
+              <img [src]="type.type.name | iconType" />{{ type.type.name }}
+            </div>
+          </div>
+          <div
+            class="modal-card-content-stats"
+            [ngClass]="{
+              'mb-2': pokemon!.evolutions && pokemon!.evolutions.length <= 1
+            }"
+          >
+            <div
+              *ngFor="let stats of pokemon!.info?.stats"
+              class="modal-card-content-stats-content"
+            >
+              <p class="modal-card-content-stats-content-name">
+                {{ stats.stat.name | nameStats }}
+              </p>
+              <p class="modal-card-content-stats-content-value">
+                {{ stats.base_stat }}
+              </p>
+              <div class="modal-card-content-stats-content-progress">
+                <div
+                  [ngStyle]="{
+                    'width': stats.base_stat | percentageStats,
+                    'background-image': pokemon!.color | gradientBackground
+                  }"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="modal-card-footer"
+          *ngIf="pokemon!.evolution_data && pokemon!.evolution_data.length > 1"
+        >
+          <div
+            class="modal-card-footer-items"
+            [ngClass]="{
+              '!flex-nowrap': pokemon!.evolution_data.length > 3,
+              '!justify-start': pokemon!.evolution_data.length > 3,
+              'overflow-x-auto': pokemon!.evolution_data.length > 3
+            }"
+          >
+            <ng-container *ngFor="let evolution of pokemon!.evolution_data">
+              <img
+                [src]="evolution.sprites.other?.home?.front_default"
+                alt="Evolution {{ evolution.name }}"
+              />
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-modal>

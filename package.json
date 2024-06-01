@@ -12,14 +12,14 @@
     "prepare": "husky install",
     "test": "ng test",
     "test:coverage": "ng test --code-coverage",
-    "test:coverage:one": "ng test --code-coverage --watch --include=src/app/pages/home/components/list/components/item/item.component.spec.ts",
+    "test:coverage:one": "ng test --code-coverage --watch --include=src/app/components/display-item/display-item.component.spec.ts",
     "build:styles": "node-sass src/global.scss src/global.min.css --output-style=compressed",
     "platform:android": "ionic cap add android",
-    "platform:build:android": "ionic cap build android",
-    "run:android": "ionic cap run android -l --external",
+    "build:android": "ionic cap build android",
+    "android": "ionic cap run android -l --external",
     "platform:ios": "ionic cap add ios",
-    "platform:build:ios": "ionic cap build ios",
-    "run:ios": "ionic cap run ios -l --external"
+    "build:ios": "ionic cap build ios",
+    "ios": "ionic cap run ios -l --external"
   },
   "private": true,
   "dependencies": {
@@ -40,6 +40,7 @@
     "@capacitor/status-bar": "6.0.0",
     "@ionic/angular": "^8.0.0",
     "color.js": "^1.2.0",
+    "cordova-plugin-android-notch": "^1.0.3",
     "ionicons": "^7.2.1",
     "ngx-skeleton-loader": "^9.0.0",
     "rxjs": "~7.8.0",

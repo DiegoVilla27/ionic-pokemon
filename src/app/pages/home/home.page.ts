@@ -1,23 +1,23 @@
 import { NgFor, NgIf } from "@angular/common";
+import { Component, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import {
-  Component,
-  ElementRef,
-  OnDestroy,
-  OnInit,
-  Renderer2,
-  ViewChild
-} from "@angular/core";
-import { IonContent } from "@ionic/angular/standalone";
+  IonContent,
+  IonHeader,
+  IonModal,
+  IonToolbar,
+  IonButton
+} from "@ionic/angular/standalone";
 import { Subject, takeUntil } from "rxjs";
+import { DisplayItemComponent } from "src/app/components/display-item/display-item.component";
 import { SpinnerComponent } from "src/app/components/spinner/spinner.component";
 import { setStatusBar } from "src/app/helpers/status-bar/status-bar.helper";
 import { TPlatform } from "src/app/interfaces/general.interface";
 import { IPokemon } from "src/app/interfaces/pokemon.interface";
+import { PlatformService } from "src/app/services/platform/platform.service";
 import { PokemonService } from "src/app/services/pokemon/pokemon.service";
 import { ChangeGenerationComponent } from "./components/change-generation/change-generation.component";
 import { ListComponent } from "./components/list/list.component";
 import { SearchComponent } from "./components/search/search.component";
-import { PlatformService } from "src/app/services/platform/platform.service";
 
 @Component({
   selector: "poke-home",
@@ -25,26 +25,28 @@ import { PlatformService } from "src/app/services/platform/platform.service";
   styleUrls: ["home.page.scss"],
   standalone: true,
   imports: [
+    IonButton,
+    IonToolbar,
     NgIf,
     NgFor,
     IonContent,
+    IonHeader,
     SpinnerComponent,
     SearchComponent,
     ChangeGenerationComponent,
+    DisplayItemComponent,
     ListComponent
   ]
 })
 export class HomePage implements OnInit, OnDestroy {
-  @ViewChild("header") header!: ElementRef;
-  @ViewChild("content") content!: ElementRef;
+  @ViewChild(IonContent) _content!: IonContent;
+  @ViewChild(IonModal) modal!: IonModal;
   platform: TPlatform = "android";
   pokemons: IPokemon[] = [];
   pokemonsFiltered: IPokemon[] = [];
   pokemonSelected: IPokemon | null = null;
   generation: number = 1;
   loading: boolean = true;
-  currentHeader?: HTMLDivElement | null;
-  currentHeaderHeight: number = 0;
   // IMAGES
   IMG_POKE_BG: string = "assets/images/pokeball-bg.webp";
 
@@ -53,7 +55,6 @@ export class HomePage implements OnInit, OnDestroy {
 
   constructor(
     private _pokemonSvc: PokemonService,
-    private _renderer: Renderer2,
     private _platformSvc: PlatformService
   ) {
     this._platformSvc
@@ -67,47 +68,13 @@ export class HomePage implements OnInit, OnDestroy {
     this.getPokemons(this.generation);
   }
 
-  ngAfterViewChecked(): void {
-    const header: HTMLDivElement | null =
-      document.querySelector(".home-header");
-    this.addPaddingToHeader(header);
-    this.addPaddingToContent(header);
+  close(): void {
+    this._pokemonSvc.setPokemonSelected(null);
   }
 
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
-  }
-
-  addPaddingToHeader(header: HTMLDivElement | null): void {
-    if (header && header !== this.currentHeader) {
-      if (this.platform === "ios") {
-        this._renderer.setStyle(
-          header,
-          "cssText",
-          `padding-top: var(--ion-safe-area-top, 0)`
-        );
-        this.currentHeader = header;
-      }
-    }
-  }
-
-  addPaddingToContent(header: HTMLDivElement | null): void {
-    if (header) {
-      const headerHeight: number = header.offsetHeight;
-      if (
-        header !== this.currentHeader ||
-        headerHeight !== this.currentHeaderHeight
-      ) {
-        this._renderer.setStyle(
-          this.content.nativeElement,
-          "cssText",
-          `padding-top: ${headerHeight}px`
-        );
-        this.currentHeader = header;
-        this.currentHeaderHeight = headerHeight;
-      }
-    }
   }
 
   getPokemons(generation: number): void {
@@ -145,5 +112,9 @@ export class HomePage implements OnInit, OnDestroy {
   changeGeneration(generation: number): void {
     this.generation = generation;
     this.getPokemons(this.generation);
+  }
+
+  scrollToTop() {
+    this._content.scrollToTop(500);
   }
 }
