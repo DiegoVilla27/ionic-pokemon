@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { HomePage } from "./home.page";
-import { PokemonService } from "src/app/services/pokemon.service";
+import { PokemonService } from "src/app/services/pokemon/pokemon.service";
 import { of } from "rxjs";
 
 describe("HomePage", () => {
@@ -12,6 +12,7 @@ describe("HomePage", () => {
   beforeEach(async () => {
     spyPokemonService = jasmine.createSpyObj("PokemonService", {
       "getPokemons": of([]),
+      "getPokemonsAws": of([]),
       "getPokemonSelected": of(null)
     });
 

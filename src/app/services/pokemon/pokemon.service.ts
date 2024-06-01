@@ -1,13 +1,5 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import {
-  Chain,
-  IEvolutionChain,
-  IGenerationResponse,
-  IPokemonApi,
-  IPokemonNameUrl,
-  IPokemonSpecies
-} from "../interfaces/pokemon-api.interface";
-import { IPokemon } from "../interfaces/pokemon.interface";
 import {
   BehaviorSubject,
   delay,
@@ -17,8 +9,18 @@ import {
   of,
   switchMap
 } from "rxjs";
-import { HttpClient } from "@angular/common/http";
 import { environment } from "src/environments/environment";
+import {
+  Chain,
+  IEvolutionChain,
+  IGenerationResponse,
+  IPokemonApi,
+  IPokemonNameUrl,
+  IPokemonSpecies,
+  Stat,
+  Type
+} from "../../interfaces/pokemon-api.interface";
+import { IPokemon } from "../../interfaces/pokemon.interface";
 
 @Injectable({
   providedIn: "root"
@@ -46,6 +48,15 @@ export class PokemonService {
         switchMap((pokemons: IPokemon[]) => this.getPokemon(pokemons)),
         map((pokemons: IPokemon[]) => this.findPokemonCurrent(pokemons))
       );
+  }
+
+  // THIS IS FOR API AWS CUSTOM
+  getPokemonsAws(generation: number): Observable<IPokemon[]> {
+    return this._http
+      .get<
+        IPokemon[]
+      >(generation === 1 ? `${environment.aws.apiFirst}` : `${environment.aws.apiSecond}`)
+      .pipe(delay(2000));
   }
 
   sortingPokemon(pokemons: IPokemonNameUrl[]): IPokemonNameUrl[] {
@@ -130,6 +141,72 @@ export class PokemonService {
       return {
         ...pokemon,
         info: find
+      };
+    });
+  }
+
+  generateApiPokemon(pokemons: IPokemon[]): IPokemon[] {
+    return pokemons.map((pokemon: IPokemon) => {
+      const info: IPokemonApi | undefined = pokemon.info;
+      const stats: Stat[] = info?.stats ?? [];
+      const mappedStats: Stat[] = stats.map((stat) => ({
+        base_stat: stat.base_stat ?? 0,
+        stat: { name: stat.stat.name, url: "" }
+      }));
+      const types: Type[] = info?.types ?? [];
+      const mappedTypes: Type[] = types.map((type) => ({
+        type: {
+          name: type.type.name,
+          url: ""
+        }
+      }));
+      const evolutions: IPokemonApi[] =
+        pokemon.evolution_data?.map((evolution: IPokemonApi) => ({
+          height: evolution?.height ?? 0,
+          id: evolution?.id ?? 0,
+          name: evolution?.name ?? "",
+          sprites: {
+            other: {
+              home: {
+                front_default:
+                  evolution?.sprites?.other?.home?.front_default ?? ""
+              }
+            }
+          },
+          stats:
+            evolution?.stats?.map((stat) => ({
+              base_stat: stat.base_stat ?? 0,
+              stat: { name: stat.stat.name, url: "" }
+            })) ?? [],
+          types:
+            evolution?.types.map((type) => ({
+              type: {
+                name: type.type.name,
+                url: ""
+              }
+            })) ?? [],
+          weight: evolution?.weight ?? 0
+        })) ?? [];
+      return {
+        name: pokemon.name,
+        url: pokemon.url,
+        info: {
+          height: info?.height ?? 0,
+          id: info?.id ?? 0,
+          name: info?.name ?? "",
+          sprites: {
+            other: {
+              home: {
+                front_default: info?.sprites?.other?.home?.front_default ?? ""
+              }
+            }
+          },
+          stats: mappedStats,
+          types: mappedTypes,
+          weight: info?.weight ?? 0
+        },
+        color: "",
+        evolution_data: evolutions
       };
     });
   }

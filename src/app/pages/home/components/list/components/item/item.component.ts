@@ -4,7 +4,7 @@ import { prominent } from "color.js";
 import { Color } from "src/app/interfaces/colors.interface";
 import { IPokemon } from "src/app/interfaces/pokemon.interface";
 import { GradientBackgroundPipe } from "src/app/pipes/gradient-background.pipe";
-import { PokemonService } from "src/app/services/pokemon.service";
+import { PokemonService } from "src/app/services/pokemon/pokemon.service";
 import { ColorTypePipe } from "src/app/pipes/color-type.pipe";
 import { IconTypePipe } from "src/app/pipes/icon-type.pipe";
 import { SkeletonComponent } from "./components/skeleton/skeleton.component";

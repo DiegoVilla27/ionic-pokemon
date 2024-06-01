@@ -1,6 +1,6 @@
 import { TestBed } from "@angular/core/testing";
 import { PokemonService } from "./pokemon.service";
-import { IGenerationResponse } from "../interfaces/pokemon-api.interface";
+import { IGenerationResponse } from "../../interfaces/pokemon-api.interface";
 import {
   HttpClientTestingModule,
   HttpTestingController

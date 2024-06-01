@@ -8,7 +8,7 @@
       <poke-search (searchFn)="filter($event)" />
       <img [src]="IMG_POKE_BG" />
     </div>
-    <div class="home-content">
+    <div class="home-content" #content>
       <poke-list [pokemons]="pokemonsFiltered" />
     </div>
     <!--<poke-display-item

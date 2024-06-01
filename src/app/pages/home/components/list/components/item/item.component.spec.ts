@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { IonicModule } from "@ionic/angular";
-import { PokemonService } from "src/app/services/pokemon.service";
+import { PokemonService } from "src/app/services/pokemon/pokemon.service";
 import { ItemComponent } from "./item.component";
 import { NgStyle } from "@angular/common";
 import { GradientBackgroundPipe } from "src/app/pipes/gradient-background.pipe";

@@ -15,10 +15,3 @@ textarea {
     @apply outline-none border-0;
   }
 }
-
-ion-content::part(scroll) {
-  padding-top: var(--ion-safe-area-top, 0);
-}
-ion-content::part(scroll) {
-  padding-bottom: var(--ion-safe-area-bottom, 0);
-}

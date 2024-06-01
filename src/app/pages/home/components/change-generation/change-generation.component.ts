@@ -13,8 +13,8 @@ export class ChangeGenerationComponent {
   @Output() changeGenerationFn: EventEmitter<number> =
     new EventEmitter<number>();
   // IMAGES
-  IMG_POKEBALL_ULTRA: string = "assets/images/pokeball/great-pokeball.svg";
-  IMG_POKEBALL: string = "assets/images/pokeball/pokeball.svg";
+  IMG_POKEBALL_ULTRA: string = "assets/images/pokeball/great-pokeball.png";
+  IMG_POKEBALL: string = "assets/images/pokeball/pokeball.png";
 
   changeGeneration(generation: number): void {
     if (generation === 1) this.changeGenerationFn.emit(2);

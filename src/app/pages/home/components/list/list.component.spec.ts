@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { IonicModule } from "@ionic/angular";
 import { ListComponent } from "./list.component";
-import { PokemonService } from "src/app/services/pokemon.service";
+import { PokemonService } from "src/app/services/pokemon/pokemon.service";
 import { IPokemon } from "src/app/interfaces/pokemon.interface";
 
 const pokemon: IPokemon = {
