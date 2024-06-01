@@ -26,6 +26,8 @@ Run `ionic serve` for a dev server and navigate to `http://localhost:8100/`. The
 
 > If you need see prettier console objects in testing, use this: `console.log(JSON.stringify(obj, undefined, 2));`
 
+> iOS: Sign app must be same ID in XCode and `capacitor.config.ts` appId var
+
 ## Commits
 
 Structure for commits:
