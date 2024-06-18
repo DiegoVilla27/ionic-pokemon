@@ -12,7 +12,7 @@
     <poke-error-msg
       *ngIf="form.get('query')!.errors"
       [form]="form"
-      [list]="validations.query"
+      [list]="validations['query']"
       [type]="'query'"
     />
   </form>

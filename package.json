@@ -13,7 +13,6 @@
     "test": "ng test",
     "test:coverage": "ng test --code-coverage",
     "test:coverage:one": "ng test --code-coverage --watch --include=src/app/home/home.page.spec.ts",
-    "build:styles": "node-sass src/global.scss src/global.min.css --output-style=compressed",
     "platform:android": "rm -rf android && npm run build && ionic cap add android",
     "build:android": "npm run platform:android && ionic cap build android",
     "android": "ionic cap run android -l --external",

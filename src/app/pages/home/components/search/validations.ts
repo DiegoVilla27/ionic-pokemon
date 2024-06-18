@@ -1,4 +1,6 @@
-export const validations = {
+import { IErrorMsg } from "src/app/components/error-msg/error-msg.component";
+
+export const validations: IErrorMsg = {
   query: [
     {
       type: "maxlength",
